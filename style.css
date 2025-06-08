@@ -1,0 +1,196 @@
+body {
+  width: 100%;
+  background: url(img/Simple_Background-Dark.png) no-repeat;
+  background-size: cover;
+  font-family: "Lato", sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  color: #333;
+}
+
+/*===========================================================
+
+SimpleChart
+
+===========================================================*/
+.chart-container {
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  width: 100%;
+  max-width: 700px;
+}
+
+.bar-chart {
+  position: relative;
+  width: 100%;
+  height: 300px; /* グラフの高さ */
+  border-left: 2px solid #ccc; /* Y軸の線 */
+  border-bottom: 2px solid #ccc; /* X軸の線 */
+  display: flex;
+  align-items: flex-end; /* 棒を下から生やす */
+  padding-bottom: 10px; /* X軸との隙間 */
+  padding-left: 10px; /* Y軸との隙間 */
+  box-sizing: border-box;
+  margin-bottom: 30px;
+}
+
+.bar {
+  width: 15%; /* 棒の幅 */
+  background-color: #3498db;
+  margin: 0 10px; /* 棒間の隙間 */
+  transition: height 0.8s ease-out; /* 高さ変更のアニメーション */
+  position: relative; /* ラベルの位置調整用 */
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.bar .value-label {
+  position: absolute;
+  top: -35px; /* 棒の少し上に配置 */
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.9em;
+  color: #555;
+  white-space: nowrap;
+}
+
+.bar .category-label {
+  position: absolute;
+  bottom: -35px; /* 棒の少し下に配置 */
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.9em;
+  color: #555;
+  white-space: nowrap;
+}
+/*===========================================================
+
+Axis Line
+
+===========================================================*/
+/* 軸線 */
+.y-axis-line {
+  position: absolute;
+  left: 20px; /* Y軸開始位置(データ領域左) */
+  top: 20px; /* X軸開始位置(データ領域上) */
+  height: calc(100px - 40px); /* 軸の長さ（コンテナの長さ - 上下のpadding） */
+  width: 1px;
+  background-color: #777;
+}
+
+.x-axis-line {
+  position: absolute;
+  left: 20px; /* Y軸開始位置(データ領域左) */
+  top: 20px; /* X軸開始位置(データ領域上) */
+  height: calc(100px - 40px); /* 軸の長さ（コンテナの長さ - 上下のpadding） */
+  width: 1px;
+  background-color: #777;
+}
+
+/* Y軸とX軸ラベル */
+.y-axis-label,
+.x-axis-label {
+  position: absolute;
+  font-size: 0.9em;
+  color: #777;
+  white-space: nowrap; /* テキスト折り返し防止 */
+}
+
+/* Y軸ラベル */
+.y-axis-label {
+  top: 50%;
+  left: -5px; /* Y軸線の少し左 */
+  transform: translate(-50%) rotate(-90deg); /* 垂直に配置、中央揃え */
+  transform-origin: left center; /* 開店の中心を左端中央に */
+}
+
+/* X軸ラベル */
+.x-axis-label {
+  bottom: 0px; /* X軸線の少し下 */
+  left: 50%;
+  transform: translateX(-50%); /* 中央揃え */
+}
+/*===========================================================
+
+Button
+
+===========================================================*/
+button {
+  padding: 12px 25px;
+  font-size: 1em;
+  cursor: pointer;
+  background-color: #2ecc71;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #27ae60;
+}
+/*===========================================================
+
+Box
+
+===========================================================*/
+.box {
+  width: 720px;
+  height: 480px;
+  margin: 13% auto 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 32px;
+  font-weight: bold;
+  position: relative;
+  transition: 0.4s;
+}
+.box::before {
+  content: "";
+  width: 50px;
+  height: 50px;
+  border-top: 2px solid rgba(255, 255, 255, 0.5);
+  border-left: 2px solid rgba(255, 255, 255, 0.5);
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  transition: 0.4s;
+  transition-delay: 0.5s;
+}
+.box::after {
+  content: "";
+  width: 50px;
+  height: 50px;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+  border-right: 2px solid rgba(255, 255, 255, 0.5);
+  position: absolute;
+  bottom: -1px;
+  right: -1px;
+  transition: 0.4s;
+  transition-delay: 0.5s;
+}
+.box:hover:before,
+.box:hover::after {
+  width: 100%;
+  height: 100%;
+  border-color: rgba(255, 255, 255, 0.3);
+  transition-delay: 0s;
+  border-radius: 10px;
+}
+.box:hover {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
+  transition-delay: 0.3s;
+  border-radius: 10px;
+}
