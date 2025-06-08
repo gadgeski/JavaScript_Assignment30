@@ -1,7 +1,7 @@
 const barChart = document.getElementById("barChart");
 const updateChartBtn = document.getElementById("updateChartBtn");
 
-// 初期データ
+// 初期データ(編集したい時はここを変更してください)
 let chartData = [
   { category: "A", value: 70 },
   { category: "B", value: 120 },
